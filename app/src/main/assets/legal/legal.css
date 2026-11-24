@@ -1,0 +1,556 @@
+/*
+ * Spindle Drop - legal pages theme (Terms of Use / Privacy Policy).
+ * Static CSS for an Android WebView with JavaScript disabled.
+ * Loaded from file:///android_asset/legal/*.html; fonts live in ../fonts/.
+ */
+
+@font-face {
+  font-family: "Lilita One";
+  src: url("../fonts/LilitaOne-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fredoka";
+  src: url("../fonts/Fredoka.ttf") format("truetype");
+  font-weight: 300 700;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+
+  --violet: #2a0e61;
+  --violet-deep: #170639;
+  --ink: #1a0640;
+  --magenta: #c2187a;
+  --pink: #ff3d8b;
+  --sun: #ffc93c;
+  --mint: #3ddc97;
+  --sky: #39b8ff;
+  --white: #ffffff;
+
+  --text: #f4eeff;
+  --text-soft: #ded2fb;
+  --muted: #b9a8e6;
+  --card-top: rgba(255, 255, 255, 0.09);
+  --card-bottom: rgba(255, 255, 255, 0.045);
+  --card-border: rgba(255, 255, 255, 0.13);
+
+  --radius-lg: 28px;
+  --radius-md: 22px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--violet-deep);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  position: relative;
+  isolation: isolate;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: "Fredoka", "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-tap-highlight-color: transparent;
+  background:
+    linear-gradient(180deg, #2a0e61 0%, #230b55 30%, #1b0846 65%, #170639 100%);
+}
+
+/* Soft colour blobs (fixed behind the content). */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 38% at 8% 4%, rgba(194, 24, 122, 0.55), rgba(194, 24, 122, 0) 70%),
+    radial-gradient(55% 34% at 100% 26%, rgba(57, 184, 255, 0.20), rgba(57, 184, 255, 0) 70%),
+    radial-gradient(60% 36% at 0% 72%, rgba(61, 220, 151, 0.14), rgba(61, 220, 151, 0) 70%),
+    radial-gradient(60% 36% at 100% 100%, rgba(255, 61, 139, 0.30), rgba(255, 61, 139, 0) 70%),
+    radial-gradient(40% 25% at 55% 52%, rgba(255, 201, 60, 0.07), rgba(255, 201, 60, 0) 70%);
+}
+
+/* Tiny sparkle dots (tiled radial gradients). */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.7;
+  background-image:
+    radial-gradient(circle at 18% 26%, rgba(255, 255, 255, 0.85) 0 1px, rgba(255, 255, 255, 0) 1.7px),
+    radial-gradient(circle at 72% 64%, rgba(255, 233, 170, 0.7) 0 1.2px, rgba(255, 233, 170, 0) 2px),
+    radial-gradient(circle at 44% 82%, rgba(255, 255, 255, 0.55) 0 0.8px, rgba(255, 255, 255, 0) 1.5px),
+    radial-gradient(circle at 88% 14%, rgba(180, 255, 225, 0.6) 0 1px, rgba(180, 255, 225, 0) 1.8px);
+  background-size: 190px 230px, 270px 310px, 130px 150px, 330px 270px;
+  animation: twinkle 7s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.45; }
+  to { opacity: 0.8; }
+}
+
+/* ------------------------------------------------------------------ */
+/* Layout                                                              */
+/* ------------------------------------------------------------------ */
+
+.page {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding:
+    calc(18px + env(safe-area-inset-top, 0px))
+    max(16px, env(safe-area-inset-right, 0px))
+    calc(30px + env(safe-area-inset-bottom, 0px))
+    max(16px, env(safe-area-inset-left, 0px));
+  counter-reset: sec;
+}
+
+/* ------------------------------------------------------------------ */
+/* Hero header card                                                    */
+/* ------------------------------------------------------------------ */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 26px 20px 22px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(255, 61, 139, 0.55), rgba(255, 61, 139, 0) 60%),
+    linear-gradient(160deg, rgba(194, 24, 122, 0.62) 0%, rgba(84, 20, 140, 0.72) 55%, rgba(42, 14, 97, 0.85) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 22px 44px -20px rgba(6, 0, 22, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -2px 0 rgba(26, 6, 64, 0.35);
+}
+
+/* Burst rays behind the badge. */
+.hero::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -260px;
+  width: 640px;
+  height: 640px;
+  margin-left: -320px;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    rgba(255, 255, 255, 0.075) 0deg 7deg,
+    rgba(255, 255, 255, 0) 7deg 18deg
+  );
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 18%, rgba(0, 0, 0, 0) 62%);
+  mask-image: radial-gradient(circle at 50% 50%, #000 18%, rgba(0, 0, 0, 0) 62%);
+}
+
+/* Glossy top sheen. */
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 46%;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0));
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.badge {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 6px;
+  filter: drop-shadow(0 10px 14px rgba(10, 0, 30, 0.55));
+  animation: bob 3.6s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: "Lilita One", "Fredoka", sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b8ffe0;
+  text-shadow: 0 2px 0 rgba(26, 6, 64, 0.6);
+}
+
+.title {
+  margin: 4px 0 6px;
+  font-family: "Lilita One", "Fredoka", sans-serif;
+  font-weight: 400;
+  font-size: clamp(36px, 10.5vw, 50px);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  background: linear-gradient(180deg, #ffffff 0%, #ffffff 38%, #ffe3f1 62%, #ffc93c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Chunky outline + drop shadow built from stacked drop-shadows. */
+  filter:
+    drop-shadow(1.5px 0 0 var(--ink))
+    drop-shadow(-1.5px 0 0 var(--ink))
+    drop-shadow(0 1.5px 0 var(--ink))
+    drop-shadow(0 -1.5px 0 var(--ink))
+    drop-shadow(0 4px 0 #12042f)
+    drop-shadow(0 10px 12px rgba(8, 0, 26, 0.55));
+}
+
+.lede {
+  max-width: 30em;
+  margin: 0 auto 14px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #f3e6ff;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 7px 14px 7px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #ffe7a3;
+  background: rgba(16, 3, 40, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.chip::before {
+  content: "";
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--mint);
+  box-shadow: 0 0 0 3px rgba(61, 220, 151, 0.25), 0 0 10px rgba(61, 220, 151, 0.8);
+}
+
+/* ------------------------------------------------------------------ */
+/* Cards                                                               */
+/* ------------------------------------------------------------------ */
+
+.card {
+  position: relative;
+  margin-top: 16px;
+  padding: 20px 18px 18px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, var(--card-top), var(--card-bottom));
+  border: 1px solid var(--card-border);
+  box-shadow:
+    0 14px 30px -18px rgba(4, 0, 18, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+}
+
+.card > :last-child {
+  margin-bottom: 0;
+}
+
+/* "At a glance" summary card. */
+.glance {
+  background:
+    linear-gradient(180deg, rgba(61, 220, 151, 0.16), rgba(61, 220, 151, 0.05)),
+    linear-gradient(180deg, var(--card-top), var(--card-bottom));
+  border-color: rgba(61, 220, 151, 0.35);
+}
+
+.glance h2 {
+  margin: 0 0 10px;
+  font-family: "Lilita One", "Fredoka", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  color: #c9ffe8;
+}
+
+.checks {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.checks li {
+  position: relative;
+  margin: 0 0 8px;
+  padding-left: 34px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.checks li:last-child {
+  margin-bottom: 0;
+}
+
+.checks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #6ff0b8, #2fbf82);
+  box-shadow: 0 2px 0 #178a5f, inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.checks li::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 7px;
+  width: 6px;
+  height: 11px;
+  border: solid #0d3d2d;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(42deg);
+}
+
+/* Numbered section cards. */
+.section {
+  counter-increment: sec;
+}
+
+.section h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 10px;
+  font-family: "Lilita One", "Fredoka", sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  text-shadow: 0 2px 0 rgba(26, 6, 64, 0.55);
+}
+
+.section h2::before {
+  content: counter(sec, decimal-leading-zero);
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 34px;
+  padding: 0 8px;
+  border-radius: 12px;
+  font-family: "Lilita One", "Fredoka", sans-serif;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  color: var(--violet);
+  text-shadow: none;
+  background: linear-gradient(180deg, #ffe58a 0%, #ffc93c 60%, #f2a91f 100%);
+  box-shadow: 0 3px 0 #b8741a, inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.section:nth-of-type(4n + 2) h2::before {
+  background: linear-gradient(180deg, #8af5c6 0%, #3ddc97 60%, #25b87a 100%);
+  box-shadow: 0 3px 0 #178a5f, inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.section:nth-of-type(4n + 3) h2::before {
+  background: linear-gradient(180deg, #8fd9ff 0%, #39b8ff 60%, #1f93db 100%);
+  box-shadow: 0 3px 0 #156ea8, inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.section:nth-of-type(4n + 4) h2::before {
+  color: var(--white);
+  background: linear-gradient(180deg, #ff86b6 0%, #ff3d8b 60%, #d81e6c 100%);
+  box-shadow: 0 3px 0 #9c0f4c, inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* ------------------------------------------------------------------ */
+/* Text                                                                */
+/* ------------------------------------------------------------------ */
+
+p {
+  margin: 0 0 12px;
+  color: var(--text-soft);
+}
+
+strong {
+  font-weight: 600;
+  color: var(--white);
+}
+
+.card ul {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.card ul:not(.checks) li {
+  position: relative;
+  margin: 0 0 8px;
+  padding-left: 22px;
+  color: var(--text-soft);
+}
+
+.card ul:not(.checks) li::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0.62em;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffd1e4 0%, #ff3d8b 45%, #ff8a2b 100%);
+  box-shadow: 0 0 0 2px rgba(255, 61, 139, 0.18);
+}
+
+.note {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 16px;
+  color: var(--text-soft);
+  background: rgba(57, 184, 255, 0.1);
+  border: 1px solid rgba(57, 184, 255, 0.28);
+}
+
+/* Owner-editable placeholders such as [support email]. */
+.ph {
+  display: inline;
+  padding: 1px 8px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #ffe7a3;
+  background: rgba(255, 201, 60, 0.12);
+  border: 1px dashed rgba(255, 201, 60, 0.55);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.contact {
+  margin-top: 4px;
+  font-size: 18px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Footer                                                              */
+/* ------------------------------------------------------------------ */
+
+.footer {
+  margin-top: 26px;
+  padding: 18px 12px 4px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.footer .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  font-family: "Lilita One", "Fredoka", sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+  color: var(--white);
+}
+
+.footer .mini {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+.footer p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.footer .tag {
+  margin-top: 6px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #ffd56a;
+}
+
+.divider {
+  height: 1px;
+  margin: 0 auto 14px;
+  max-width: 220px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0));
+}
+
+/* ------------------------------------------------------------------ */
+/* Small phones                                                        */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 380px) {
+  body {
+    font-size: 16px;
+  }
+
+  .hero {
+    padding: 22px 16px 20px;
+  }
+
+  .card {
+    padding: 18px 15px 16px;
+  }
+
+  .section h2 {
+    gap: 10px;
+    font-size: 20px;
+  }
+
+  .section h2::before {
+    min-width: 38px;
+    height: 31px;
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after,
+  .badge {
+    animation: none;
+  }
+}
