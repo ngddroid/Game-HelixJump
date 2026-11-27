@@ -14,6 +14,7 @@ materialIcons = "1.7.8"
 googleServices = "4.4.2"
 firebaseCrashlyticsPlugin = "3.0.2"
 firebaseBom = "33.7.0"
+playAppUpdate = "2.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -39,6 +40,10 @@ androidx-compose-material-icons-extended = { group = "androidx.compose.material"
 firebase-bom = { group = "com.google.firebase", name = "firebase-bom", version.ref = "firebaseBom" }
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics" }
 firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging" }
+
+# Google Play in-app updates (the -ktx artifact includes the core library).
+play-app-update = { group = "com.google.android.play", name = "app-update-ktx", version.ref = "playAppUpdate" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

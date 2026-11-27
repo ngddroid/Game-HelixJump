@@ -8,6 +8,10 @@ import com.ngstudio.spindledrop.core.ads.NoAdGateway
 import com.ngstudio.spindledrop.core.audio.AudioEngine
 import com.ngstudio.spindledrop.core.data.ProfileRepository
 import com.ngstudio.spindledrop.core.telemetry.Telemetry
+import com.ngstudio.spindledrop.core.update.AppUpdater
+import com.ngstudio.spindledrop.notifications.DailyReminders
+import com.ngstudio.spindledrop.notifications.Notifications
+import com.ngstudio.spindledrop.push.Push
 import com.ngstudio.spindledrop.game.level.LevelGenerator
 import com.ngstudio.spindledrop.game.render.BallThumbnails
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,6 +24,8 @@ class AppServices(app: Application) {
     val ads: AdGateway = if (BuildConfig.DEBUG) FakeAdGateway() else NoAdGateway()
     /** Firebase Analytics + Crashlytics facade. Never throws. */
     val telemetry = Telemetry(app)
+    /** Google Play in-app updates. MainActivity binds its result launcher. */
+    val updater = AppUpdater(app, telemetry)
     private val _ready = MutableStateFlow(false)
     /** True once sounds are loaded and the first level is generated. */
     val ready: StateFlow<Boolean> = _ready
@@ -27,6 +33,10 @@ class AppServices(app: Application) {
     init {
         telemetry.setCollectionEnabled(true)
         telemetry.boot(BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE, BuildConfig.DEBUG)
+        // Notifications: channels, FCM topic subscription, and the daily 9 AM / 7 PM reminders.
+        Notifications.createChannels(app)
+        Push.init(debug = BuildConfig.DEBUG)
+        DailyReminders.scheduleAll(app)
         Thread({
             audio.load()
             LevelGenerator.generate(profile.value.currentLevel)

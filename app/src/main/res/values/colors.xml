@@ -2,4 +2,6 @@
 <resources>
     <color name="splash_bg">#2A0E61</color>
     <color name="night">#160634</color>
+    <!-- Accent tint for notifications (status-bar icon + collapsed row). -->
+    <color name="notify_accent">#FF3D8B</color>
 </resources>

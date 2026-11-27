@@ -47,6 +47,11 @@ android {
     androidResources {
         noCompress += listOf("m4a", "wav")
     }
+    lint {
+        // False positive: this is a Compose ComponentActivity app with no Fragments, so
+        // registerForActivityResult() in MainActivity is safe regardless of the fragment version.
+        disable += "InvalidFragmentVersionForActivityResult"
+    }
 }
 
 dependencies {
@@ -66,6 +71,9 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
+    implementation(libs.firebase.messaging)
+    // Google Play in-app updates
+    implementation(libs.play.app.update)
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)

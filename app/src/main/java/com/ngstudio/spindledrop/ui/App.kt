@@ -142,6 +142,7 @@ fun SpindleApp(services: AppServices) {
                 }
             }
             (services.ads as? FakeAdGateway)?.let { TestAdOverlay(it) }
+            UpdateOverlay()
             ToastHost()
         }
     }

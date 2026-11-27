@@ -2,8 +2,11 @@
 <!--
   TEMPLATE - PLEASE REVIEW BEFORE PUBLISHING
   This Privacy Policy is a plain-English starting template written for the current
-  build of Spindle Drop (no internet permission, no ads SDK, no analytics; only the
-  VIBRATE permission; all game data stored locally on the device).
+  build of Spindle Drop. This build uses Google Firebase (Analytics, Crashlytics and
+  Cloud Messaging) and Google Play in-app updates, sends daily local reminders and
+  push notifications, and so requests the INTERNET, POST_NOTIFICATIONS and
+  RECEIVE_BOOT_COMPLETED permissions in addition to VIBRATE. Game progress is still
+  stored locally on the device.
   Have it reviewed by a qualified legal professional before release, keep it in
   sync with the app (and the Google Play Data safety form) whenever features change,
   and replace every placeholder in square brackets, e.g. [support email].
@@ -93,16 +96,17 @@
     <p class="eyebrow">Spindle Drop</p>
     <h1 class="title">Privacy Policy</h1>
     <p class="lede">How Spindle Drop handles your information, in plain English.</p>
-    <span class="chip">Last updated: November 23, 2026</span>
+    <span class="chip">Last updated: November 27, 2026</span>
   </header>
 
   <aside class="card glance" aria-label="Privacy at a glance">
     <h2>At a glance</h2>
     <ul class="checks">
       <li>Your progress, settings, coins and unlocked items stay on your device.</li>
-      <li>No account and no sign-in.</li>
-      <li>This version has no internet access, no ads and no analytics.</li>
-      <li>We never collect, sell or share your personal data.</li>
+      <li>No account and no sign-in — we never ask for your name, email or location.</li>
+      <li>We use Google Firebase to collect anonymous usage and crash data, so we can fix bugs and improve the game.</li>
+      <li>We send notifications: daily reminders and occasional news. You control them in your device settings.</li>
+      <li>There are no ads, and we never sell your data.</li>
     </ul>
   </aside>
 
@@ -127,32 +131,51 @@
 
   <section class="card section" id="not-collected">
     <h2>What we don’t collect</h2>
-    <p>Spindle Drop <strong>does not collect, transmit, sell or share personal data</strong>. The game does not ask for, collect or use:</p>
+    <p>Spindle Drop does <strong>not</strong> ask for, collect or use:</p>
     <ul>
       <li>your name, email address or phone number;</li>
       <li>your location, contacts, photos or files;</li>
-      <li>advertising IDs or other device identifiers;</li>
+      <li>the device <strong>advertising ID</strong> (we switch it off for analytics);</li>
       <li>information about other apps on your device.</li>
     </ul>
-    <p>There is <strong>no account and no sign-in</strong>. You can start playing straight away without telling us anything about yourself.</p>
+    <p>There is <strong>no account and no sign-in</strong>, and <strong>no ads</strong>. You can start playing straight away without telling us anything about yourself. We never sell your data or use it for advertising.</p>
   </section>
 
-  <section class="card section" id="internet-ads-analytics">
-    <h2>Internet, ads and analytics</h2>
-    <p>The current version of Spindle Drop:</p>
+  <section class="card section" id="analytics">
+    <h2>Usage data, crash reports and messaging</h2>
+    <p>To understand how the game is played and to fix problems, Spindle Drop uses <strong>Google Firebase</strong>, a set of services provided by Google. Firebase works without any account or sign-in and does not identify you by name. Specifically, the game uses:</p>
     <ul>
-      <li>does <strong>not</strong> request the internet permission, so it cannot send data over the internet;</li>
-      <li>does <strong>not</strong> include any advertising SDK;</li>
-      <li>does <strong>not</strong> include analytics, crash-reporting or tracking tools.</li>
+      <li><strong>Firebase Analytics</strong> — anonymous, aggregated usage data, such as which screens are opened, which levels are started, completed or failed, time spent, your approximate region (from your IP address, which is not stored by us) and general device/app details (model, Android version, app version, language). This is tied to a random, resettable app-instance identifier, not to you.</li>
+      <li><strong>Firebase Crashlytics</strong> — if the game crashes or hits an error, it sends a diagnostic report (the error, a stack trace, the app version and basic device state) so we can fix it.</li>
+      <li><strong>Firebase Cloud Messaging</strong> — lets us send you push notifications (see “Notifications” below). Each install is given a messaging token; it does not identify you personally.</li>
     </ul>
+    <p>We have turned off the advertising ID and ad-personalisation signals for analytics. This data is processed by Google as our service provider under Google’s own privacy terms. See <strong>Third-party services</strong> below.</p>
+  </section>
+
+  <section class="card section" id="notifications">
+    <h2>Notifications</h2>
+    <p>Spindle Drop can send you two kinds of notifications:</p>
+    <ul>
+      <li><strong>Daily reminders</strong> — friendly nudges at around 9 AM and 7 PM, created on your device, to help you keep your streak going.</li>
+      <li><strong>News &amp; events</strong> — occasional push messages about new content, events and rewards, sent through Firebase Cloud Messaging.</li>
+    </ul>
+    <p>On Android 13 and later the game asks for your permission before it can post notifications. You can turn notifications on or off at any time — for the whole app or per category — in your device’s <strong>Settings &gt; Apps &gt; Spindle Drop &gt; Notifications</strong>. Turning them off does not affect the rest of the game.</p>
   </section>
 
   <section class="card section" id="permissions">
     <h2>Permissions</h2>
-    <p>The game uses only one Android permission:</p>
+    <p>The game uses these Android permissions:</p>
     <ul>
-      <li><strong>Vibration</strong>: used only for haptic feedback, such as a short buzz when the ball smashes through a ring. You can turn vibration off at any time in Settings.</li>
+      <li><strong>Vibration</strong>: haptic feedback, such as a short buzz when the ball smashes through a ring. You can turn vibration off in Settings.</li>
+      <li><strong>Internet / network state</strong>: to send anonymous analytics and crash reports, receive push notifications and check Google Play for app updates.</li>
+      <li><strong>Notifications (POST_NOTIFICATIONS)</strong>: to show the daily reminders and news notifications described above.</li>
+      <li><strong>Run at startup (RECEIVE_BOOT_COMPLETED)</strong>: so the daily reminders can be re-scheduled after your device restarts.</li>
     </ul>
+  </section>
+
+  <section class="card section" id="updates">
+    <h2>App updates</h2>
+    <p>Spindle Drop uses <strong>Google Play in-app updates</strong> to let you install new versions without leaving the game. This feature is provided by Google Play; the update check happens through the Play Store and does not involve any personal data of yours.</p>
   </section>
 
   <section class="card section" id="keeping-deleting">
@@ -162,29 +185,33 @@
       <li>use <strong>Reset progress</strong> in the game’s Settings to erase your progress, coins and unlocked items; or</li>
       <li><strong>uninstall</strong> Spindle Drop to remove all of its data from your device. You can also clear the app’s storage from your device’s Android settings.</li>
     </ul>
-    <p>We never receive your data, so we can’t restore lost progress for you. If Android device backup is on, a copy in your personal backup may be restored if you reinstall the game. You can manage this in your device’s backup settings.</p>
+    <p>Your game progress lives only on your device, so we can’t restore lost progress for you. If Android device backup is on, a copy in your personal backup may be restored if you reinstall the game. You can manage this in your device’s backup settings. To stop analytics and crash data going forward, you can turn off notifications and, if you prefer, uninstall the game; uninstalling also removes its Firebase identifiers from your device.</p>
   </section>
 
   <section class="card section" id="children">
     <h2>Children’s privacy</h2>
-    <p>Spindle Drop is a casual game for players of all ages. It is <strong>not designed to collect personal information from anyone, including children</strong>. The game doesn’t collect or share personal data, so we don’t receive any information about children who play it.</p>
-    <p>Parents and guardians can contact us using the details below with any questions.</p>
+    <p>Spindle Drop is a casual game for a general audience and is <strong>not directed to children under 13</strong>. We do not knowingly collect personal information from children. The analytics and crash data we use is anonymous and tied to a random app identifier, not to a person, and we have disabled advertising identifiers and ad personalisation.</p>
+    <p>If you believe a child has provided us with personal information, or you have any questions as a parent or guardian, please contact us using the details below.</p>
   </section>
 
-  <section class="card section" id="future-ads-analytics">
-    <h2>If we add ads or analytics later</h2>
-    <p>A future version might add optional features. Examples are rewarded ads, where you choose to watch an ad for an in-game reward, or analytics that help us fix bugs and improve levels.</p>
-    <p>If that happens, <strong>we will update this Privacy Policy before that version is released</strong>. The updated policy will explain:</p>
+  <section class="card section" id="third-parties">
+    <h2>Third-party services</h2>
+    <p>We use the following Google services to run and improve the game. They act as our service providers and process data under their own terms:</p>
     <ul>
-      <li>what data is involved and why it is needed;</li>
-      <li>which third-party services receive it;</li>
-      <li>the choices you have, such as opting out of personalised ads where available.</li>
+      <li><strong>Google Firebase</strong> (Analytics, Crashlytics and Cloud Messaging) — see the <span class="ph">Firebase Privacy and Security</span> information and <span class="ph">Google Privacy Policy</span> at policies.google.com/privacy.</li>
+      <li><strong>Google Play</strong> (in-app updates) — governed by the Google Play Terms and the Google Privacy Policy.</li>
     </ul>
+    <p>We don’t use advertising networks, and we don’t share your data with anyone for advertising or for their own independent use.</p>
+  </section>
+
+  <section class="card section" id="future-ads">
+    <h2>If we add ads later</h2>
+    <p>This version has <strong>no ads</strong>. If a future version adds optional features such as rewarded ads, <strong>we will update this Privacy Policy before that version is released</strong> and explain what data is involved, who receives it and the choices you have.</p>
   </section>
 
   <section class="card section" id="security">
     <h2>Security</h2>
-    <p>Your saved game data is kept in the app’s private storage, which Android protects from other apps. The game doesn’t send data anywhere, so none of it travels over a network.</p>
+    <p>Your saved game progress is kept in the app’s private storage, which Android protects from other apps. The analytics, crash and messaging data described above is sent to Google over encrypted (HTTPS) connections. No method of transmission or storage is completely secure, but we rely on Google’s infrastructure and keep the data we use to the minimum needed.</p>
   </section>
 
   <section class="card section" id="changes">
