@@ -159,7 +159,6 @@ fun MainScreen() {
                     0 -> HomeTab(profile, dialogs)
                     1 -> LevelsTab(profile, dialogs)
                     2 -> ShopTab(profile)
-                    3 -> ThemesTab(profile)
                     else -> QuestsTab(profile, dialogs)
                 }
             }
@@ -235,7 +234,6 @@ private fun DockBar(selected: Int, p: PlayerProfile, modifier: Modifier = Modifi
         TabItem("Home", Icons.Rounded.Home, GC.Pink),
         TabItem("Levels", Icons.Rounded.Map, GC.Sky),
         TabItem("Shop", Icons.Rounded.ShoppingBag, GC.Orange),
-        TabItem("Themes", Icons.Rounded.Palette, GC.Mint),
         TabItem("Quests", Icons.Rounded.EmojiEvents, GC.Purple),
     )
     val questBadge = p.daily.missions.any { it.done && !it.claimed } || Economy.canClaimLogin(p) ||
@@ -286,7 +284,7 @@ private fun DockBar(selected: Int, p: PlayerProfile, modifier: Modifier = Modifi
                     ) {
                         Box(Modifier.offset(y = lift).scale(sc)) {
                             Icon(it.icon, it.label, tint = if (sel) Color.White else it.color.copy(alpha = 0.55f).compositeOverDock(), modifier = Modifier.size(27.dp))
-                            val badge = (i == 4 && questBadge) || (i == 0 && p.chests > 0)
+                            val badge = (i == 3 && questBadge) || (i == 0 && p.chests > 0)
                             if (badge && !sel) Box(Modifier.align(Alignment.TopEnd).offset(x = 5.dp, y = (-3).dp).size(11.dp).background(GC.Red, CircleShape).border(2.dp, Color(0xFF2A1170), CircleShape))
                         }
                         Spacer(Modifier.height(2.dp))

@@ -43,7 +43,8 @@ object Difficulty {
 
     fun isBoss(level: Int) = level % LEVELS_PER_CHAPTER == 0
     fun chapter(level: Int) = (level - 1) / LEVELS_PER_CHAPTER
-    fun worldIndex(level: Int) = chapter(level) % WORLD_COUNT
+    /** Theme advances to the next world every level, wrapping from the last world back to the first. */
+    fun worldIndex(level: Int) = (level - 1).coerceAtLeast(0) % WORLD_COUNT
     /** Remix cycle: 0 for the first 120 levels, 1 for the next 120, and so on. */
     fun remixCycle(level: Int) = chapter(level) / WORLD_COUNT
     /** Mastery tier: 0 below level 1001, then 1..9. */
@@ -80,7 +81,12 @@ object Difficulty {
         val tierBonus = tier * 0.015f
         val speedMul = 1f + tier * 0.05f
         val warm = l <= 10
-        val ringCount = if (warm) 10 + l else (16 + 30 * dd.toDouble().pow(0.9)).roundToInt()
+        val baseRings = if (warm) 10 + l else (16 + 30 * dd.toDouble().pow(0.9)).roundToInt()
+        // Levels 1..5 stay short and friendly; from level 6 the tower grows steadily
+        // longer so runs feel substantial instead of ending too soon. Capped at 48 rings,
+        // the longest length the fairness solver can still guarantee is winnable.
+        val lengthBoost = if (l <= 5) 0 else ((l - 5) * 1.4f).roundToInt()
+        val ringCount = (baseRings + lengthBoost).coerceIn(11, 48)
         return LevelParams(
             level = l,
             d = dd,
