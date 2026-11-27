@@ -68,6 +68,7 @@ import com.ngstudio.spindledrop.ui.screens.PlayScreen
 import com.ngstudio.spindledrop.ui.screens.ProfileScreen
 import com.ngstudio.spindledrop.ui.screens.SettingsScreen
 import com.ngstudio.spindledrop.ui.screens.SplashScreen
+import com.ngstudio.spindledrop.ui.screens.StudioIntroScreen
 import com.ngstudio.spindledrop.ui.theme.GC
 import com.ngstudio.spindledrop.ui.theme.GT
 import com.ngstudio.spindledrop.ui.theme.LocalServices
@@ -75,6 +76,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 
 sealed interface Route {
+    data object StudioIntro : Route
     data object Splash : Route
     data object Onboarding : Route
     data object Main : Route
@@ -86,7 +88,7 @@ sealed interface Route {
 }
 
 class Navigator {
-    val stack = mutableStateListOf<Route>(Route.Splash)
+    val stack = mutableStateListOf<Route>(Route.StudioIntro)
     var tab by mutableIntStateOf(0)
     var forward by mutableStateOf(true)
     val current: Route get() = stack.last()
@@ -117,6 +119,7 @@ fun SpindleApp(services: AppServices) {
     CompositionLocalProvider(LocalServices provides services, LocalNav provides nav) {
         Box(Modifier.fillMaxSize().background(GC.Night)) {
             val route = nav.current
+            LaunchedEffect(route) { services.telemetry.screenView(routeName(route)) }
             BackHandler(enabled = nav.stack.size > 1 && route !is Route.Play) {
                 services.audio.sfx(Sfx.UI_BACK)
                 nav.pop()
@@ -127,6 +130,7 @@ fun SpindleApp(services: AppServices) {
                 label = "nav",
             ) { r ->
                 when (r) {
+                    Route.StudioIntro -> StudioIntroScreen { nav.resetTo(Route.Splash) }
                     Route.Splash -> SplashScreen()
                     Route.Onboarding -> OnboardingScreen()
                     Route.Main -> MainScreen()
@@ -143,9 +147,23 @@ fun SpindleApp(services: AppServices) {
     }
 }
 
+/** Stable screen name for analytics / crash breadcrumbs. */
+private fun routeName(r: Route): String = when (r) {
+    Route.StudioIntro -> "studio_intro"
+    Route.Splash -> "splash"
+    Route.Onboarding -> "onboarding"
+    Route.Main -> "main"
+    is Route.Play -> "play_${r.mode.name.lowercase()}"
+    Route.Settings -> "settings"
+    is Route.Legal -> if (r.terms) "legal_terms" else "legal_privacy"
+    Route.Profile -> "profile"
+    Route.Dev -> "dev"
+}
+
 private fun transitionFor(from: Route, to: Route, forward: Boolean): ContentTransform {
     val fade = tween<Float>(260)
     return when {
+        from is Route.StudioIntro -> fadeIn(tween(600)) togetherWith fadeOut(tween(600))
         from is Route.Splash -> fadeIn(tween(500)) togetherWith fadeOut(tween(400))
         to is Route.Play || from is Route.Play ->
             (fadeIn(tween(320)) + scaleIn(tween(380), initialScale = if (to is Route.Play) 1.08f else 0.94f)) togetherWith

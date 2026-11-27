@@ -149,6 +149,8 @@ fun PlayScreen(route: Route.Play) {
         val secs = ((System.currentTimeMillis() - startedAt) / 1000).toInt()
         var summary: Economy.WinSummary? = null
         s.profile.update { val (np, sm) = Economy.applyRun(it, r, secs); summary = sm; np }
+        if (r.won) s.telemetry.levelComplete(r.mode.name, r.level, r.stars, secs * 1000, summary?.firstClear == true)
+        else s.telemetry.levelFail(r.mode.name, r.level, r.ringsPassed)
         return summary
     }
 
@@ -203,6 +205,7 @@ fun PlayScreen(route: Route.Play) {
         }
         engine.send(EngineCommand.SetPaused(false))
         s.audio.playMusic(musicFor(route.mode, level))
+        if (route.mode != Mode.PREVIEW) s.telemetry.levelStart(route.mode.name, level)
         startedAt = System.currentTimeMillis()
         dialog = PlayDialog.None
         gate = null; combo = null; floaters.clear(); showHint = false
