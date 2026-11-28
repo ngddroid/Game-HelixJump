@@ -47,7 +47,7 @@ fun UpdateOverlay() {
     GameDialog(ui is UpdateUi.Available, onDismiss = { updater.later() }, title = "Update available", titleColor = GC.Mint) {
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
-                "A new version of Spindle Drop is ready on Google Play, with fresh content and fixes. Update now?",
+                "A new version of Spiral Smash is ready on Google Play, with fresh content and fixes. Update now?",
                 style = GT.body(16.sp), textAlign = TextAlign.Center,
             )
             Spacer(Modifier.height(16.dp))

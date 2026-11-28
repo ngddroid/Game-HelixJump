@@ -319,7 +319,7 @@ private fun ChestsPanel(p: PlayerProfile, onOpen: () -> Unit) {
                 else { s.audio.sfx(Sfx.ERROR); Toasts.show("A chest costs 1,000 coins") }
             }
         }, color = GC.Orange, modifier = Modifier.fillMaxWidth(), shine = p.chests > 0, sub = if (p.chests > 0) null else "1,000 coins")
-        if (s.ads.isAvailable) {
+        if (com.ngstudio.spindledrop.BuildConfig.DEBUG && s.ads.isAvailable) {
             Spacer(Modifier.height(10.dp))
             GameButton("FREE 100 COINS", onClick = {
                 s.ads.showRewarded("free_coins") { ok -> if (ok) { s.profile.update { it.copy(coins = it.coins + 100) }; s.audio.sfx(Sfx.REWARD); Toasts.show("+100 coins!") } }

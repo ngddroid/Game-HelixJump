@@ -1,10 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml">
+        <config>
+          <theme>@style/Theme.Spindle</theme>
+        </config>
+      </layout>
+    </layouts>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c803bded-d602-47e3-8020-9ff91de8e3bc" name="Changes" comment="" />
+    <list default="true" id="c803bded-d602-47e3-8020-9ff91de8e3bc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/9.6.0/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/01134dbd-de08-48a4-933b-0060e2dd7df9/.globals.work.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/01134dbd-de08-48a4-933b-0060e2dd7df9/.strings.work.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/01134dbd-de08-48a4-933b-0060e2dd7df9/_app.work.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/01134dbd-de08-48a4-933b-0060e2dd7df9/buildfingerprint.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/01134dbd-de08-48a4-933b-0060e2dd7df9/classloaderscopes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/01134dbd-de08-48a4-933b-0060e2dd7df9/entry.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/01134dbd-de08-48a4-933b-0060e2dd7df9/projectfingerprint.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/01134dbd-de08-48a4-933b-0060e2dd7df9/work.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/1iuz5wie9oclvlulzauxv1645/candidates.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/configuration-cache/1iuz5wie9oclvlulzauxv1645/candidates.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/23q7ho95dufe7sw86o5w6chdo/candidates.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/configuration-cache/23q7ho95dufe7sw86o5w6chdo/candidates.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/56007aed-4b09-476b-a6b6-f62b09bb8ad5/.globals.work.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/56007aed-4b09-476b-a6b6-f62b09bb8ad5/.strings.work.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/56007aed-4b09-476b-a6b6-f62b09bb8ad5/_app.work.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/56007aed-4b09-476b-a6b6-f62b09bb8ad5/buildfingerprint.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/56007aed-4b09-476b-a6b6-f62b09bb8ad5/classloaderscopes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/56007aed-4b09-476b-a6b6-f62b09bb8ad5/entry.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/56007aed-4b09-476b-a6b6-f62b09bb8ad5/projectfingerprint.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/56007aed-4b09-476b-a6b6-f62b09bb8ad5/work.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/d94917f4-0b23-4b1b-b07c-71611e165c4a/.globals.work.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/d94917f4-0b23-4b1b-b07c-71611e165c4a/.strings.work.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/d94917f4-0b23-4b1b-b07c-71611e165c4a/_app.work.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/d94917f4-0b23-4b1b-b07c-71611e165c4a/buildfingerprint.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/d94917f4-0b23-4b1b-b07c-71611e165c4a/classloaderscopes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/d94917f4-0b23-4b1b-b07c-71611e165c4a/entry.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/d94917f4-0b23-4b1b-b07c-71611e165c4a/projectfingerprint.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/d94917f4-0b23-4b1b-b07c-71611e165c4a/work.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/f0qfk3jbr40vtyiyxr9946u0c/candidates.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/configuration-cache/f0qfk3jbr40vtyiyxr9946u0c/candidates.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/google-services.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/legal/legal.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/legal/privacy.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/legal/privacy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/legal/terms.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/legal/terms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/SpindleApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/SpindleApp.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/core/ads/Ads.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/core/ads/Ads.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/game/GameEngine.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/game/GameEngine.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/game/level/LevelGenerator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/game/level/LevelGenerator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/game/level/LevelModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/game/level/LevelModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/App.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/UpdateOverlay.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/UpdateOverlay.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/LevelsTab.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/LevelsTab.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/MainScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/MainScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/MiscScreens.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/MiscScreens.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/Onboarding.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/Onboarding.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/PlayScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/PlayScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/QuestsRewards.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/QuestsRewards.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/SplashOnboarding.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/SplashOnboarding.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/StoreTabs.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/ngstudio/spindledrop/ui/screens/StoreTabs.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,7 +90,12 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[LocalEmulator::path=/Users/mac2019/.android/avd/Medium_Phone.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Default::serial=192.168.1.41:5555;connection=85ceaa5f]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -31,12 +113,17 @@
       </state>
     </system>
   </component>
+  <component name="GenerateSignedApkSettings">
+    <option name="KEY_STORE_PATH" value="$PROJECT_DIR$/ng-gaming-studio.jks" />
+    <option name="KEY_ALIAS" value="ng-gaming-studio" />
+    <option name="BUILD_TARGET_KEY" value="apk" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="3MgRSJYm3E7YjXGs0IV7jAIeguj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -44,22 +131,38 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Android App.app.executor": "Run",
+    "ApkExportedModule": "SpindleDrop.app",
+    "ExportApk.ApkPathForSpindleDrop.app": "/Volumes/Work/pooja/projects/github_projects/Game-HelixJump/app",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Volumes/Work/pooja/projects/github_projects/Game-HelixJump/app/src/main/res/drawable",
     "show.migrate.to.gradle.popup": "false"
+  },
+  "keyToStringList": {
+    "ExportApk.BuildVariants": [
+      "release"
+    ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
-      <module name="SpindleDrop.app" />
+      <module name="SpiralSmash.app" />
       <option name="ANDROID_RUN_CONFIGURATION_SCHEMA_VERSION" value="1" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
@@ -127,5 +230,31 @@
   </component>
   <component name="TaskManager">
     <servers />
+  </component>
+  <component name="play_dynamic_filters_status">
+    <option name="appIdToCheckInfo">
+      <map>
+        <entry key="com.ngstudio.spindledrop">
+          <value>
+            <CheckInfo lastCheckTimestamp="1795858185636" />
+          </value>
+        </entry>
+        <entry key="com.ngstudio.spindledrop.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1795858185657" />
+          </value>
+        </entry>
+        <entry key="com.ngstudio.spiralsmash">
+          <value>
+            <CheckInfo lastCheckTimestamp="1795858626768" />
+          </value>
+        </entry>
+        <entry key="com.ngstudio.spiralsmash.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1795858626770" />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -3,8 +3,7 @@ package com.ngstudio.spindledrop
 import android.app.Application
 import android.content.Context
 import com.ngstudio.spindledrop.core.ads.AdGateway
-import com.ngstudio.spindledrop.core.ads.FakeAdGateway
-import com.ngstudio.spindledrop.core.ads.NoAdGateway
+import com.ngstudio.spindledrop.core.ads.createAdGateway
 import com.ngstudio.spindledrop.core.audio.AudioEngine
 import com.ngstudio.spindledrop.core.data.ProfileRepository
 import com.ngstudio.spindledrop.core.telemetry.Telemetry
@@ -21,7 +20,10 @@ import kotlinx.coroutines.flow.StateFlow
 class AppServices(app: Application) {
     val profile = ProfileRepository(app)
     val audio = AudioEngine(app)
-    val ads: AdGateway = if (BuildConfig.DEBUG) FakeAdGateway() else NoAdGateway()
+    // Watch-ad features and ad-based instant unlocks are DEBUG ONLY. The simulated gateway lives in
+    // the debug source set; release links the no-op NoAdGateway, so none of that code ships. The
+    // factory is chosen per variant (src/debug vs src/release). Wire a real ad SDK here later.
+    val ads: AdGateway = createAdGateway()
     /** Firebase Analytics + Crashlytics facade. Never throws. */
     val telemetry = Telemetry(app)
     /** Google Play in-app updates. MainActivity binds its result launcher. */

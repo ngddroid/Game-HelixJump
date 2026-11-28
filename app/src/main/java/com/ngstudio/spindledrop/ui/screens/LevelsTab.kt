@@ -193,7 +193,6 @@ private fun ChapterCard(ch: Int, p: PlayerProfile, onLevel: (Int) -> Unit) {
 
 @Composable
 private fun LevelNode(level: Int, p: PlayerProfile, worldColor: Color, onLevel: (Int) -> Unit) {
-    val s = LocalServices.current
     val boss = Difficulty.isBoss(level)
     val unlocked = p.isUnlocked(level)
     val cleared = level <= p.maxCleared || p.stars[level] > 0
@@ -228,7 +227,6 @@ private fun LevelNode(level: Int, p: PlayerProfile, worldColor: Color, onLevel: 
         Row(Modifier.height(14.dp).padding(top = 2.dp)) {
             if (cleared) for (k in 1..3) StarIcon(p.stars[level] >= k, 12.dp)
         }
-        if (s.ads.isAvailable && !unlocked && level == p.currentLevel + 1) Unit
     }
 }
 

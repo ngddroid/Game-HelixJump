@@ -114,6 +114,7 @@ import kotlinx.coroutines.launch
 private sealed class PlayDialog {
     data object None : PlayDialog()
     data object Pause : PlayDialog()
+    data object ConfirmQuit : PlayDialog()
     data class Revive(val result: RunResult) : PlayDialog()
     data class Fail(val result: RunResult) : PlayDialog()
     data class Win(val result: RunResult, val summary: Economy.WinSummary?) : PlayDialog()
@@ -212,7 +213,7 @@ fun PlayScreen(route: Route.Play) {
     }
 
     // Freeze the 3D scene behind pause / revive / fail (saves battery); the win screen keeps its celebration.
-    val frozen = dialog is PlayDialog.Pause || dialog is PlayDialog.Revive || dialog is PlayDialog.Fail
+    val frozen = dialog is PlayDialog.Pause || dialog is PlayDialog.ConfirmQuit || dialog is PlayDialog.Revive || dialog is PlayDialog.Fail
     LaunchedEffect(frozen) {
         if (frozen) delay(350) // let the death/pause frame settle first
         engine.send(EngineCommand.SetPaused(frozen))
@@ -232,6 +233,7 @@ fun PlayScreen(route: Route.Play) {
         when (dialog) {
             PlayDialog.None -> { s.audio.sfx(Sfx.UI_OPEN); dialog = PlayDialog.Pause }
             PlayDialog.Pause -> dialog = PlayDialog.None
+            PlayDialog.ConfirmQuit -> { s.audio.sfx(Sfx.UI_BACK); dialog = PlayDialog.Pause }
             else -> Unit
         }
     }
@@ -252,7 +254,22 @@ fun PlayScreen(route: Route.Play) {
         // ---------------- dialogs ----------------
         val d = dialog
         GameDialog(d is PlayDialog.Pause, onDismiss = { dialog = PlayDialog.None }, title = "Paused", titleColor = GC.Sky) {
-            PauseContent(onResume = { dialog = PlayDialog.None }, onRestart = { restart() }, onHome = { goHome() })
+            PauseContent(onResume = { dialog = PlayDialog.None }, onRestart = { restart() }, onHome = { dialog = PlayDialog.ConfirmQuit })
+        }
+        GameDialog(d is PlayDialog.ConfirmQuit, onDismiss = { dialog = PlayDialog.Pause }, title = "Quit level?", titleColor = GC.Red) {
+            Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+                Text(
+                    if (route.mode == Mode.ENDLESS) "Leave now and this run ends — your progress won't be saved."
+                    else "Leave now and you'll lose your progress in this level.",
+                    style = GT.body(16.sp), textAlign = TextAlign.Center,
+                )
+                Spacer(Modifier.height(16.dp))
+                Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                    GameButton("Keep Playing", onClick = { dialog = PlayDialog.Pause }, color = GC.Mint, modifier = Modifier.weight(1f), height = 52.dp, fontSize = 18.sp)
+                    GameButton("Quit", onClick = { goHome() }, color = GC.Red, modifier = Modifier.weight(1f), height = 52.dp, fontSize = 18.sp, sfx = Sfx.UI_BACK,
+                        leading = { Icon(Icons.Rounded.Home, null, tint = Color.White) })
+                }
+            }
         }
         GameDialog(d is PlayDialog.Revive, onDismiss = null, title = "Keep Going?", titleColor = GC.Red) {
             if (d is PlayDialog.Revive) ReviveContent(
@@ -494,7 +511,7 @@ private fun ReviveContent(result: RunResult, coins: Int, onRevive: () -> Unit, o
                 onRevive()
             } else { s.audio.sfx(Sfx.ERROR); Toasts.show("Not enough coins") }
         }, color = GC.Mint, modifier = Modifier.fillMaxWidth(), leading = { CoinIcon(30.dp) }, sub = "Revive", shine = true)
-        if (s.ads.isAvailable) {
+        if (com.ngstudio.spindledrop.BuildConfig.DEBUG && s.ads.isAvailable) {
             Spacer(Modifier.height(8.dp))
             GameButton("Watch Ad", onClick = { s.ads.showRewarded("revive") { ok -> if (ok) onRevive() } }, color = GC.Yellow,
                 modifier = Modifier.fillMaxWidth(), height = 54.dp, fontSize = 20.sp, sub = "Free revive")
@@ -570,7 +587,7 @@ private fun WinContent(r: RunResult, summary: Economy.WinSummary?, onNext: () ->
         Text("Score %,d · Best combo ${r.bestCombo}".format(r.score), style = GT.body(14.sp, GC.Muted))
         Spacer(Modifier.height(12.dp))
         GameButton(if (isLevel) "NEXT LEVEL" else "CONTINUE", onClick = onNext, color = GC.Mint, modifier = Modifier.fillMaxWidth(), shine = true, sfx = Sfx.SWOOSH)
-        if (s.ads.isAvailable && !doubled && total > 0) {
+        if (com.ngstudio.spindledrop.BuildConfig.DEBUG && s.ads.isAvailable && !doubled && total > 0) {
             Spacer(Modifier.height(8.dp))
             GameButton("x2 COINS", onClick = {
                 s.ads.showRewarded("double_coins") { ok ->

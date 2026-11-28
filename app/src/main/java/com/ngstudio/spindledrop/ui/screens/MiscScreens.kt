@@ -178,7 +178,7 @@ fun SettingsScreen() {
                 GameButton("Reset progress", onClick = { reset = 1 }, color = GC.Red, modifier = Modifier.fillMaxWidth(), height = 50.dp, fontSize = 19.sp)
             }
             Text(
-                "Spindle Drop v${BuildConfig.VERSION_NAME}",
+                "Spiral Smash v${BuildConfig.VERSION_NAME}",
                 style = GT.body(13.sp, GC.Muted), textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth().padding(16.dp).noRippleClick {
                     if (BuildConfig.DEBUG) { devTaps++; if (devTaps >= 5) { devTaps = 0; nav.push(Route.Dev) } }

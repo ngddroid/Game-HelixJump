@@ -102,8 +102,8 @@ fun SpindleLogo(modifier: Modifier = Modifier, scale: Float = 1f) {
                 },
             )
         }
-        StrokeText("SPINDLE", size = 58.sp, brush = Brush.verticalGradient(listOf(Color(0xFFFFF3A8), GC.Yellow, GC.Orange)), stroke = GC.Ink, strokeWidth = 5.dp)
-        StrokeText("DROP", size = 52.sp, brush = Brush.verticalGradient(listOf(Color(0xFFFFB3D6), GC.Pink, Color(0xFFB0207A))), stroke = GC.Ink, strokeWidth = 5.dp,
+        StrokeText("SPIRAL", size = 58.sp, brush = Brush.verticalGradient(listOf(Color(0xFFFFF3A8), GC.Yellow, GC.Orange)), stroke = GC.Ink, strokeWidth = 5.dp)
+        StrokeText("SMASH", size = 52.sp, brush = Brush.verticalGradient(listOf(Color(0xFFFFB3D6), GC.Pink, Color(0xFFB0207A))), stroke = GC.Ink, strokeWidth = 5.dp,
             modifier = Modifier.offset(y = (-10).dp))
     }
 }

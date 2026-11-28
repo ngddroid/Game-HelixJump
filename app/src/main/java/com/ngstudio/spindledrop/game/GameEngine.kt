@@ -714,7 +714,7 @@ class GameEngine(private val feedback: Feedback) : GLSurfaceView.Renderer {
             smashed -> "SMASH!"
             combo == 3 -> "Blazing!"
             combo == 5 -> "Unstoppable!"
-            combo == 7 -> "Spindle Storm!"
+            combo == 7 -> "Spiral Storm!"
             combo == 10 -> "Legendary!"
             combo == 2 -> "Smooth!"
             else -> return

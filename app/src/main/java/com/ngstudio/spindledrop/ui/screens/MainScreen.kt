@@ -427,7 +427,7 @@ fun UnlockLevelDialog(level: Int, p: PlayerProfile, onClose: () -> Unit) {
             Spacer(Modifier.height(10.dp))
             StrokeText("Level $lastLevel", size = 32.sp)
             Spacer(Modifier.height(8.dp))
-            if (s.ads.isAvailable) {
+            if (com.ngstudio.spindledrop.BuildConfig.DEBUG && s.ads.isAvailable) {
                 Text("Watch a short ad to unlock this level right now!", style = GT.body(16.sp), textAlign = TextAlign.Center)
                 Spacer(Modifier.height(16.dp))
                 GameButton("Watch Ad", onClick = {

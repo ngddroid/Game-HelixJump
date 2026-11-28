@@ -100,7 +100,9 @@ data class Slider(
 }
 
 class RingSpec(
-    val index: Int,
+    // Reassigned once during generation so vertical stacking stays sequential after bonus rings
+    // are interleaved into the tower (see LevelGenerator); treat as read-only everywhere else.
+    var index: Int,
     val kind: RingKind,
     /** 360 cells, one per degree, in ring-local angles. */
     val cells: ByteArray,

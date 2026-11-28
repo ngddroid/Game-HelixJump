@@ -143,7 +143,7 @@ fun OnboardingScreen() {
         Column(Modifier.fillMaxSize().safeDrawingPadding()) {
             // ---- Header: brand + step counter + story-style progress ----
             Row(Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp, top = 14.dp), verticalAlignment = Alignment.CenterVertically) {
-                StrokeText("SPINDLE DROP", size = 20.sp, brush = Brush.horizontalGradient(listOf(GC.Yellow, GC.Pink)), strokeWidth = 3.dp, maxLines = 1)
+                StrokeText("SPIRAL SMASH", size = 20.sp, brush = Brush.horizontalGradient(listOf(GC.Yellow, GC.Pink)), strokeWidth = 3.dp, maxLines = 1)
                 Spacer(Modifier.weight(1f))
                 Box(Modifier.background(Color(0x66000000), RoundedCornerShape(12.dp)).padding(horizontal = 10.dp, vertical = 3.dp)) {
                     Text("${page + 1} / ${pages.size}", style = GT.display(14.sp))

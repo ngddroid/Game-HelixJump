@@ -12,7 +12,9 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.ngstudio.spindledrop"
+        // Play Store package name (permanent). The code namespace stays com.ngstudio.spindledrop
+        // (an internal detail Play never shows); applicationId is the id users and Firebase see.
+        applicationId = "com.ngstudio.spiralsmash"
         minSdk = 24
         targetSdk = 37
         versionCode = 1
@@ -23,7 +25,7 @@ android {
 
     buildTypes {
         debug {
-            // No applicationIdSuffix: debug keeps the id com.ngstudio.spindledrop so it matches
+            // No applicationIdSuffix: debug keeps the id com.ngstudio.spiralsmash so it matches
             // the Firebase app in google-services.json (Analytics + Crashlytics work in debug too).
             versionNameSuffix = "-debug"
         }

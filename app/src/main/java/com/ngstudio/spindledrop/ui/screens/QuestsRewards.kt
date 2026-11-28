@@ -361,7 +361,7 @@ fun WheelDialog(visible: Boolean, p: PlayerProfile, onClose: () -> Unit) {
             val canFree = Economy.canSpin(p)
             when {
                 canFree -> GameButton("SPIN", onClick = { spin(true) }, color = GC.Mint, modifier = Modifier.fillMaxWidth(), shine = !spinning, enabled = !spinning)
-                s.ads.isAvailable -> GameButton("SPIN AGAIN", onClick = { s.ads.showRewarded("wheel") { ok -> if (ok) spin(false) } }, color = GC.Sky,
+                com.ngstudio.spindledrop.BuildConfig.DEBUG && s.ads.isAvailable -> GameButton("SPIN AGAIN", onClick = { s.ads.showRewarded("wheel") { ok -> if (ok) spin(false) } }, color = GC.Sky,
                     modifier = Modifier.fillMaxWidth(), enabled = !spinning, sub = "Watch ad")
                 else -> GameButton("Back tomorrow", onClick = onClose, color = Color(0xFF6B5A9A), modifier = Modifier.fillMaxWidth(), fontSize = 20.sp)
             }

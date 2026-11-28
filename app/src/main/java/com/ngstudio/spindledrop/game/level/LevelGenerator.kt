@@ -107,14 +107,20 @@ class TowerBuilder(
             Pattern.RANDOM to (0.5f + d),
             Pattern.BREATHER to (0.15f + 0.4f * (1f - d)),
         )
-        if (level >= Difficulty.UNLOCK_CHUTE || !p.warmup) options += Pattern.CHUTE to 0.30f
+        // Chute runs are now ~1.8x longer (5-6 rings, below), so pick them proportionally less
+        // often. This keeps the total share of easy "direct drop" rings — and the overall
+        // difficulty — the same as before: fewer but longer smash runs, not more easy content.
+        if (level >= Difficulty.UNLOCK_CHUTE || !p.warmup) options += Pattern.CHUTE to 0.16f
         if (hazards && !p.warmup) {
             options += Pattern.SANDWICH to (0.25f + d * 0.6f)
             options += Pattern.PINWHEEL to (0.20f + d * 0.6f)
         }
         pattern = rng.pickWeighted(options)
         patternLeft = when (pattern) {
-            Pattern.CHUTE -> 2
+            // Longer straight-drop runs (5-6 aligned rings) so the ball smashes further in Blaze.
+            // Chutes stay easy (aligned gaps, reduced hazards), so this adds fun free-fall runs
+            // without touching the difficulty of the hard patterns below.
+            Pattern.CHUTE -> rng.rangeInt(4, 5)
             Pattern.BREATHER -> rng.rangeInt(1, 2)
             else -> rng.rangeInt(3, 7)
         }
@@ -391,13 +397,36 @@ object LevelGenerator {
         val rng = Rng(Rng.mix(seed, 99L))
         if (l == Difficulty.UNLOCK_CHUTE) builder.forceChuteEndingAt(main / 2)
         if (boss && (l == Difficulty.UNLOCK_GATE || rng.chance(0.6f))) builder.forceChuteEndingAt(main - 1)
-        val rings = ArrayList<RingSpec>(main + 6)
-        for (i in 0 until main) rings += builder.buildRing(i)
-        var idx = main
-        if (boss) rings += builder.buildSpecial(idx++, RingKind.GATE, gateHp = p.gateHp)
+        // Build the main rings first (these carry the real gap/hazard challenge).
+        val mainRings = ArrayList<RingSpec>(main)
+        for (i in 0 until main) mainRings += builder.buildRing(i)
+
+        // Sprinkle a few bonus (coin vault) rings through the MIDDLE of the tower too, so rewards
+        // aren't only at the very end: 2-3 for long levels, 1-2 for short ones. Vault rings are
+        // pass-through (the ball smashes them for coins and keeps falling), so they never block.
+        val midVaults = when {
+            main >= 30 -> 3
+            main >= 18 -> 2
+            else -> 1
+        }
+        val lo = 3
+        val hi = main - 3
+        // Positions (after which main ring to drop a bonus), evenly spread and kept off the ends.
+        val midAfter = if (hi > lo) (1..midVaults)
+            .map { k -> (lo + (hi - lo) * k / (midVaults + 1)).coerceIn(lo, hi) }
+            .toSet() else emptySet()
+
+        val rings = ArrayList<RingSpec>(main + midVaults + 6)
+        for (i in 0 until main) {
+            rings += mainRings[i]
+            if (i in midAfter) rings += builder.buildSpecial(0, RingKind.VAULT, vaultMultiplier = 2)
+        }
+        if (boss) rings += builder.buildSpecial(0, RingKind.GATE, gateHp = p.gateHp)
         val mults = if (p.vaultRings == 2) listOf(2, 3) else listOf(2, 3, 5)
-        for (m in mults) rings += builder.buildSpecial(idx++, RingKind.VAULT, vaultMultiplier = m)
-        rings += builder.buildSpecial(idx, RingKind.FINISH)
+        for (m in mults) rings += builder.buildSpecial(0, RingKind.VAULT, vaultMultiplier = m)
+        rings += builder.buildSpecial(0, RingKind.FINISH)
+        // Renumber so vertical stacking (y = -index * RING_SPACING) stays sequential after inserts.
+        for (i in rings.indices) rings[i].index = i
         return LevelSpec(
             level = l,
             difficulty = p.d,
